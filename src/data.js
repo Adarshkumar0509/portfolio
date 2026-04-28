@@ -1,21 +1,21 @@
 export const PERSONAL = {
-  name: "Adarsh kumar",                         
+  name: "Adarsh Kumar",
   tagline: "Full Stack Developer",
   description:
     "I build fast, scalable, and maintainable web applications — from database schema to production deployment. Clean code, solid architecture, real results.",
   location: "India",
-  status: "Open to opportunities",           // ← or "Employed" / "Freelancing"
+  status: "Open to opportunities",
   education: "B.Tech Computer Science",
   languages: "English, Hindi",
   stats: [
     { number: "15+", label: "Projects shipped" },
-    { number: "0-1",  label: "Years experience" },
-    { number: "200+",label: "GitHub stars" },
+    { number: "0-1", label: "Years experience" },
+    { number: "200+", label: "GitHub stars" },
   ],
   contact: {
-    email: "adarshkumarthakur0509@gmail.com",              
-    github: "github.com/Adarshkumar0509",         
-    linkedin.linkedin.com/in/adarsh-kumar-6a5706285",     
+    email: "adarshkumarthakur0509@gmail.com",
+    github: "github.com/Adarshkumar0509",
+    linkedin: "linkedin.com/in/adarsh-kumar-6a5706285",
   },
 };
 
@@ -38,9 +38,9 @@ export const PROJECTS = [
     title: "CloudCommerce",
     desc: "Full-stack e-commerce platform with real-time inventory, payment integration, and admin dashboard. Handles 10k+ concurrent users.",
     tags: ["React", "Node.js", "PostgreSQL", "Redis", "Stripe"],
-    status: "Live",       // "Live" | "Open Source" | "In Progress"
+    status: "Live",
     year: "2024",
-    link: "#",            // ← your live URL or github link
+    link: "#",
   },
   {
     title: "DevCollab",
