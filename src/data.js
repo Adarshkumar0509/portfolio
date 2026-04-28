@@ -1,10 +1,6 @@
-// ============================================================
-//  YOUR PERSONAL DATA — edit everything here, nowhere else
-// ============================================================
-
 export const PERSONAL = {
-  name: "Alex Dev",                          // ← your name
-  tagline: "Full Stack Developer",           // ← subtitle under name
+  name: "Adarsh kumar",                         
+  tagline: "Full Stack Developer",
   description:
     "I build fast, scalable, and maintainable web applications — from database schema to production deployment. Clean code, solid architecture, real results.",
   location: "India",
@@ -13,13 +9,13 @@ export const PERSONAL = {
   languages: "English, Hindi",
   stats: [
     { number: "15+", label: "Projects shipped" },
-    { number: "4+",  label: "Years experience" },
+    { number: "0-1",  label: "Years experience" },
     { number: "200+",label: "GitHub stars" },
   ],
   contact: {
-    email: "alex@devmail.com",               // ← your email
-    github: "github.com/alexdev",            // ← your github
-    linkedin: "linkedin.com/in/alexdev",     // ← your linkedin
+    email: "adarshkumarthakur0509@gmail.com",              
+    github: "github.com/Adarshkumar0509",         
+    linkedin.linkedin.com/in/adarsh-kumar-6a5706285",     
   },
 };
 
