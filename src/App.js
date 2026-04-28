@@ -31,11 +31,11 @@ function tag(label, styleMap) {
   };
 }
 
-// ─── UPDATE THIS to change your resume ───────────────────────
+// I UPDATE THIS to change my resume ───────────────────────
 const RESUME_FILE_ID = "13Lb3AaD31rPMRXQNU2nDINY4ckx9XnPO";
 const RESUME_PREVIEW = `https://drive.google.com/file/d/${RESUME_FILE_ID}/preview`;
 const RESUME_DOWNLOAD = `https://drive.google.com/uc?export=download&id=${RESUME_FILE_ID}`;
-// ─────────────────────────────────────────────────────────────
+//end
 
 export default function App() {
   const [active, setActive]         = useState("About");
