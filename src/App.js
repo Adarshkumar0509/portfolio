@@ -31,22 +31,23 @@ function tag(label, styleMap) {
   };
 }
 
-/* these are my component */
-export default function App() {
-  const [active, setActive]       = useState("About");
-  const [resumeUrl, setResumeUrl] = useState(null);
-  const [resumeName, setResumeName] = useState("");
-  const [form, setForm]           = useState({ name: "", email: "", message: "" });
-  const [formStatus, setFormStatus] = useState(null); // null | "sending" | "sent"
-  const [typed, setTyped]         = useState("");
-  const [roleIdx, setRoleIdx]     = useState(0);
-  const [charIdx, setCharIdx]     = useState(0);
-  const [deleting, setDeleting]   = useState(false);
+// ─── UPDATE THIS to change your resume ───────────────────────
+const RESUME_FILE_ID = "13Lb3AaD31rPMRXQNU2nDINY4ckx9XnPO";
+const RESUME_PREVIEW = `https://drive.google.com/file/d/${RESUME_FILE_ID}/preview`;
+const RESUME_DOWNLOAD = `https://drive.google.com/uc?export=download&id=${RESUME_FILE_ID}`;
+// ─────────────────────────────────────────────────────────────
 
-  const fileRef    = useRef();
+export default function App() {
+  const [active, setActive]         = useState("About");
+  const [form, setForm]             = useState({ name: "", email: "", message: "" });
+  const [formStatus, setFormStatus] = useState(null);
+  const [typed, setTyped]           = useState("");
+  const [roleIdx, setRoleIdx]       = useState(0);
+  const [charIdx, setCharIdx]       = useState(0);
+  const [deleting, setDeleting]     = useState(false);
+
   const sectionRef = useRef({});
 
-  /* typewriter */
   useEffect(() => {
     const current = ROLES[roleIdx];
     let t;
@@ -64,7 +65,6 @@ export default function App() {
     return () => clearTimeout(t);
   }, [charIdx, deleting, roleIdx]);
 
-  /* active nav on scroll */
   useEffect(() => {
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => {
@@ -79,28 +79,15 @@ export default function App() {
   const goto = section =>
     sectionRef.current[section]?.scrollIntoView({ behavior: "smooth", block: "start" });
 
-  /* resume upload */
-  const handleResume = e => {
-    const file = e.target.files[0];
-    if (!file || file.type !== "application/pdf") return;
-    if (resumeUrl) URL.revokeObjectURL(resumeUrl);
-    setResumeUrl(URL.createObjectURL(file));
-    setResumeName(file.name);
-  };
-
-  /* contact form */
   const handleForm = async e => {
     e.preventDefault();
     setFormStatus("sending");
-
-    await new Promise(r => setTimeout(r, 1200)); // remove this mock line after wiring EmailJS
-
+    await new Promise(r => setTimeout(r, 1200));
     setFormStatus("sent");
     setForm({ name: "", email: "", message: "" });
     setTimeout(() => setFormStatus(null), 4000);
   };
 
-  /* ── styles ── */
   const S = {
     nav: {
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
@@ -200,12 +187,6 @@ export default function App() {
       background: "none", border: "none", cursor: "pointer",
       padding: 0, fontFamily: "inherit", textDecoration: "none",
     },
-    resumeDrop: {
-      background: "#0d1117", border: "2px dashed #1e2a38",
-      borderRadius: "12px", padding: "3rem 2rem",
-      textAlign: "center", cursor: "pointer",
-    },
-    resumeReady: { background: "#0d1117", border: "1px solid #1e2a38", borderRadius: "12px", padding: "1.5rem" },
     dlBtn: {
       display: "inline-flex", alignItems: "center", gap: "6px",
       background: "#2563eb", color: "#fff", border: "none",
@@ -235,12 +216,6 @@ export default function App() {
       borderRadius: "8px", padding: "11px 28px",
       fontSize: "0.875rem", fontWeight: 600,
       cursor: "pointer", fontFamily: "inherit",
-    },
-    noteBox: {
-      background: "#0a1628", border: "1px solid #1e3a5f",
-      borderRadius: "10px", padding: "1rem 1.5rem",
-      maxWidth: "980px", margin: "0 auto 3rem",
-      padding: "1rem 2rem",
     },
     footer: {
       textAlign: "center", padding: "2rem",
@@ -374,35 +349,31 @@ export default function App() {
         <p style={S.secLabel}>My credentials</p>
         <h2 style={S.secTitle}>Resume</h2>
         <div style={S.divider} />
-
-        {!resumeUrl ? (
-          <div style={S.resumeDrop} onClick={() => fileRef.current.click()}>
-            <input ref={fileRef} type="file" accept="application/pdf" style={{ display: "none" }} onChange={handleResume} />
-            <div style={{ fontSize: "2.5rem", marginBottom: "0.75rem" }}>📄</div>
-            <p style={{ color: "#94a3b8", fontWeight: 600, marginBottom: "0.4rem" }}>Upload your resume PDF</p>
-            <p style={{ color: "#334155", fontSize: "0.82rem" }}>Click to browse · PDF files only</p>
-          </div>
-        ) : (
-          <div style={S.resumeReady}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem", flexWrap: "wrap", gap: "0.75rem" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                <span style={{ fontSize: "1.4rem" }}>📄</span>
-                <div>
-                  <p style={{ color: "#e2e8f0", fontWeight: 600, fontSize: "0.88rem" }}>{resumeName}</p>
-                  <p style={{ color: "#334155", fontSize: "0.72rem" }}>PDF · Ready to download</p>
-                </div>
-              </div>
-              <div style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap" }}>
-                <a href={resumeUrl} download={resumeName} style={S.dlBtn}>⬇ Download Resume</a>
-                <button style={{ ...S.btnO, padding: "9px 16px", fontSize: "0.82rem" }} onClick={() => fileRef.current.click()}>
-                  Replace
-                </button>
-                <input ref={fileRef} type="file" accept="application/pdf" style={{ display: "none" }} onChange={handleResume} />
+        <div style={{ background: "#0d1117", border: "1px solid #1e2a38", borderRadius: "12px", padding: "1.5rem", marginBottom: "1.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+              <span style={{ fontSize: "1.5rem" }}>📄</span>
+              <div>
+                <p style={{ color: "#e2e8f0", fontWeight: 600, fontSize: "0.9rem" }}>{PERSONAL.name} — Resume</p>
+                <p style={{ color: "#334155", fontSize: "0.75rem" }}>PDF · Click to download</p>
               </div>
             </div>
-            <iframe src={resumeUrl} style={{ width: "100%", height: "580px", border: "none", borderRadius: "8px", background: "#000" }} title="Resume Preview" />
+            <a
+              href={RESUME_DOWNLOAD}
+              target="_blank"
+              rel="noreferrer"
+              style={S.dlBtn}
+            >
+              ⬇ Download Resume
+            </a>
           </div>
-        )}
+        </div>
+        <iframe
+          src={RESUME_PREVIEW}
+          style={{ width: "100%", height: "600px", border: "none", borderRadius: "12px" }}
+          title="Resume Preview"
+          allow="autoplay"
+        />
       </section>
 
       {/* ── BLOG ── */}
@@ -474,21 +445,6 @@ export default function App() {
           </form>
         </div>
       </section>
-
-      {/* ── EMAILJS NOTE ── */}
-      <div style={S.noteBox}>
-        <p style={{ color: "#60a5fa", fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.4rem" }}>
-          📬 Wire up the contact form to receive real emails
-        </p>
-        <p style={{ color: "#475569", fontSize: "0.78rem", lineHeight: 1.8 }}>
-          1. <strong style={{ color: "#94a3b8" }}>emailjs.com</strong> → free account → connect Gmail → create template<br />
-          2. <code style={{ background: "#111", padding: "1px 6px", borderRadius: "4px", color: "#93c5fd" }}>npm install @emailjs/browser</code><br />
-          3. In <code style={{ background: "#111", padding: "1px 6px", borderRadius: "4px", color: "#93c5fd" }}>App.js</code> find <code style={{ background: "#111", padding: "1px 6px", borderRadius: "4px", color: "#93c5fd" }}>handleForm</code> and replace the mock line with:{" "}
-          <code style={{ background: "#111", padding: "1px 6px", borderRadius: "4px", color: "#93c5fd" }}>
-            await emailjs.send('SERVICE_ID', 'TEMPLATE_ID', form, 'PUBLIC_KEY')
-          </code>
-        </p>
-      </div>
 
       <footer style={S.footer}>
         <p>Built with React · {new Date().getFullYear()} · {PERSONAL.name}</p>
