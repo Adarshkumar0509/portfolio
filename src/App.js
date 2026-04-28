@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { PERSONAL, ROLES, SKILLS, PROJECTS, BLOG_POSTS } from "./data";
 
-/* ── helpers ─────────────────────────────────────────────── */
 const NAV = ["About", "Skills", "Projects", "Resume", "Blog", "Contact"];
 
 const STATUS_STYLE = {
@@ -32,7 +31,7 @@ function tag(label, styleMap) {
   };
 }
 
-/* ── component ───────────────────────────────────────────── */
+/* these are my component */
 export default function App() {
   const [active, setActive]       = useState("About");
   const [resumeUrl, setResumeUrl] = useState(null);
@@ -94,14 +93,6 @@ export default function App() {
     e.preventDefault();
     setFormStatus("sending");
 
-    // ─────────────────────────────────────────────────────────
-    // TO RECEIVE REAL EMAILS:
-    // 1. npm install @emailjs/browser
-    // 2. import emailjs from '@emailjs/browser'
-    // 3. Replace the line below with:
-    //    await emailjs.send('SERVICE_ID', 'TEMPLATE_ID', form, 'PUBLIC_KEY')
-    // Get your keys free at https://emailjs.com
-    // ─────────────────────────────────────────────────────────
     await new Promise(r => setTimeout(r, 1200)); // remove this mock line after wiring EmailJS
 
     setFormStatus("sent");
