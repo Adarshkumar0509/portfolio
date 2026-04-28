@@ -31,11 +31,11 @@ function tag(label, styleMap) {
   };
 }
 
-// I UPDATE THIS to change my resume ───────────────────────
+// ─── UPDATE THIS to change your resume ───────────────────────
 const RESUME_FILE_ID = "13Lb3AaD31rPMRXQNU2nDINY4ckx9XnPO";
 const RESUME_PREVIEW = `https://drive.google.com/file/d/${RESUME_FILE_ID}/preview`;
 const RESUME_DOWNLOAD = `https://drive.google.com/uc?export=download&id=${RESUME_FILE_ID}`;
-//end
+// ─────────────────────────────────────────────────────────────
 
 export default function App() {
   const [active, setActive]         = useState("About");
@@ -368,12 +368,7 @@ export default function App() {
             </a>
           </div>
         </div>
-        <iframe
-          src={RESUME_PREVIEW}
-          style={{ width: "100%", height: "600px", border: "none", borderRadius: "12px" }}
-          title="Resume Preview"
-          allow="autoplay"
-        />
+
       </section>
 
       {/* ── BLOG ── */}
