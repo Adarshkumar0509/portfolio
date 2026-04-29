@@ -8,9 +8,9 @@ export const PERSONAL = {
   education: "B.Tech Computer Science",
   languages: "English, Hindi",
   stats: [
-    { number: "15+", label: "Projects shipped" },
+    { number: "10+", label: "Projects shipped" },
     { number: "0-1", label: "Years experience" },
-    { number: "200+", label: "GitHub stars" },
+    { number: "250+", label: "GitHub stars" },
   ],
   contact: {
     email: "adarshkumarthakur0509@gmail.com",
