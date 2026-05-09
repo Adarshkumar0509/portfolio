@@ -81,6 +81,38 @@ export const PROJECTS = [
   },
 ];
 
+export const EXPERIENCE = [
+  {
+    role: "Open Source Contributor",
+    org: "OWASP Cornucopia",
+    orgLink: "https://github.com/Adarshkumar0509/cornucopia",
+    type: "GSoC Project",
+    period: "2024 — Present",
+    location: "Remote",
+    points: [
+      "Contributed 25+ merged PRs to OWASP Cornucopia, improving security, accessibility, CI/CD, testing, and frontend/backend functionality in a large-scale open-source cybersecurity project.",
+      "Implemented security fixes including CSP hardening, encrypted migrations, authorization validation, and dependency upgrades.",
+      "Integrated ESLint and resolved 1400+ lint issues while improving responsive UI, multilingual templates, and automated fuzz testing infrastructure.",
+    ],
+    tags: ["Python", "JavaScript", "GitHub Actions", "ESLint"],
+    prsLink: "https://github.com/OWASP/cornucopia/pulls?q=is%3Apr+is%3Amerged+author%3AAdarshkumar0509",
+  },
+  {
+    role: "Software Development Intern",
+    org: "CCL",
+    orgLink: "https://github.com/Adarshkumar0509/ai-recipe-generator",
+    type: "Internship",
+    period: "May – June 2026",
+    location: "Ranchi, India",
+    points: [
+      "Built a full-stack recipe app with React and Node.js that uses Google Gemini AI to generate personalized recipes based on dietary preferences and available ingredients.",
+      "Implemented JWT authentication, PostgreSQL database, and REST APIs for managing pantry inventory, meal planning, and automated shopping lists.",
+    ],
+    tags: ["React", "Node.js", "PostgreSQL", "Gemini AI", "JWT"],
+    certLink: "https://github.com/Adarshkumar0509/ai-recipe-generator",
+  },
+];
+
 export const BLOG_POSTS = [
   {
     title: "Why I Stopped Using REST and Moved to tRPC",
