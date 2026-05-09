@@ -34,7 +34,7 @@ function tag(label, styleMap) {
 }
 
 // ─── UPDATE THIS to change your resume ───────────────────────
-const RESUME_FILE_ID = "https://drive.google.com/file/d/1tmMQQdVAl_OvLZ2ZGpwymf30N-LMn4eR/view?usp=sharing";
+const RESUME_FILE_ID = "1tmMQQdVAl_OvLZ2ZGpwymf30N-LMn4eR";
 const RESUME_PREVIEW = `https://drive.google.com/file/d/${RESUME_FILE_ID}/preview`;
 const RESUME_DOWNLOAD = `https://drive.google.com/uc?export=download&id=${RESUME_FILE_ID}`;
 // ─────────────────────────────────────────────────────────────
