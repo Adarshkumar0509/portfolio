@@ -336,8 +336,9 @@ export default function App() {
               <div style={{ marginBottom: "0.75rem" }}>
                 {p.tags.map(t => <span key={t} style={S.pill}>{t}</span>)}
               </div>
-              <div style={{ marginTop: "auto" }}>
-                <a href={p.link} style={S.linkBtn}>View Project →</a>
+              <div style={{ marginTop: "auto", display: "flex", gap: "1rem" }}>
+                <a href={p.link} target="_blank" rel="noreferrer" style={S.linkBtn}>🔗 Live →</a>
+                <a href={p.github} target="_blank" rel="noreferrer" style={{ ...S.linkBtn, color: "#94a3b8" }}>⌥ GitHub →</a>
               </div>
             </div>
           ))}
@@ -405,17 +406,17 @@ export default function App() {
               Have a project in mind or want to talk? Fill out the form and I'll get back to you within 24 hours.
             </p>
             {[
-              ["📧", "Email",    PERSONAL.contact.email],
-              ["🐙", "GitHub",   PERSONAL.contact.github],
-              ["💼", "LinkedIn", PERSONAL.contact.linkedin],
-            ].map(([icon, label, val]) => (
-              <div key={label} style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.9rem" }}>
+              ["📧", "Email",    PERSONAL.contact.email,    `mailto:${PERSONAL.contact.email}`],
+              ["🐙", "GitHub",   PERSONAL.contact.github,   `https://${PERSONAL.contact.github}`],
+              ["💼", "LinkedIn", PERSONAL.contact.linkedin, `https://${PERSONAL.contact.linkedin}`],
+            ].map(([icon, label, val, href]) => (
+              <a key={label} href={href} target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.9rem", textDecoration: "none" }}>
                 <span style={{ width: "34px", height: "34px", borderRadius: "8px", background: "#0d1117", border: "1px solid #1e2a38", display: "flex", alignItems: "center", justifyContent: "center" }}>{icon}</span>
                 <div>
                   <div style={{ fontSize: "0.68rem", color: "#334155", marginBottom: "1px" }}>{label}</div>
                   <div style={{ fontSize: "0.82rem", color: "#94a3b8" }}>{val}</div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
