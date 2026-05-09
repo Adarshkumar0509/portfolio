@@ -48,6 +48,7 @@ export default function App() {
   const [charIdx, setCharIdx]       = useState(0);
   const [deleting, setDeleting]     = useState(false);
 
+  const [menuOpen, setMenuOpen] = useState(false);
   const sectionRef = useRef({});
 
   useEffect(() => {
@@ -244,26 +245,66 @@ export default function App() {
 
   return (
     <div style={{ fontFamily: "'DM Sans',system-ui,sans-serif", background: "#080c10", color: "#e2e8f0", minHeight: "100vh" }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-inner { flex-direction: column-reverse !important; align-items: center !important; text-align: center !important; padding: 100px 5vw 60px !important; }
+          .hero-photo { width: 180px !important; height: 180px !important; }
+          .hero-btns { justify-content: center !important; }
+          .about-grid { grid-template-columns: 1fr !important; }
+          .contact-grid { grid-template-columns: 1fr !important; }
+          .exp-header { flex-direction: column !important; align-items: flex-start !important; }
+          .nav-links-desktop { display: none !important; }
+          .nav-hamburger { display: flex !important; }
+          .nav-mobile-menu { display: flex !important; }
+        }
+        @media (min-width: 769px) {
+          .nav-hamburger { display: none !important; }
+          .nav-mobile-menu { display: none !important; }
+        }
+      `}</style>
 
       {/* ── NAV ── */}
       <nav style={S.nav}>
         <div style={S.logo}>
           <span style={S.logoAccent}>&lt;</span>dev<span style={S.logoAccent}>/&gt;</span>
         </div>
-        <ul style={S.navLinks}>
+        <ul className="nav-links-desktop" style={S.navLinks}>
           {NAV.map(n => (
             <li key={n}>
               <button style={S.navBtn(active === n)} onClick={() => goto(n)}>{n}</button>
             </li>
           ))}
         </ul>
+        <button
+          className="nav-hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          style={{ background: "none", border: "1px solid #1e2a38", borderRadius: "6px", color: "#94a3b8", cursor: "pointer", padding: "6px 10px", fontSize: "1.1rem" }}
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
+        {menuOpen && (
+          <div className="nav-mobile-menu" style={{
+            position: "fixed", top: "60px", left: 0, right: 0,
+            background: "rgba(8,12,16,0.98)", backdropFilter: "blur(14px)",
+            borderBottom: "1px solid #1e2a38",
+            flexDirection: "column", padding: "1rem",
+            zIndex: 99,
+          }}>
+            {NAV.map(n => (
+              <button key={n} style={{ ...S.navBtn(active === n), padding: "12px 16px", textAlign: "left", width: "100%", fontSize: "0.95rem" }}
+                onClick={() => { goto(n); setMenuOpen(false); }}>
+                {n}
+              </button>
+            ))}
+          </div>
+        )}
       </nav>
 
       {/* ── HERO ── */}
       <section data-nav="About" ref={el => sectionRef.current["About"] = el} style={S.hero}>
         <div style={S.heroGrid} />
         <div style={S.heroGlow} />
-        <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "space-between", gap: "2rem", width: "100%" }}>
+        <div className="hero-inner" style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "space-between", gap: "2rem", width: "100%" }}>
           <div style={S.heroContent}>
             <div style={S.badge}><span style={S.dot} /> Available for work</div>
             <h1 style={S.heroName}>
@@ -275,13 +316,13 @@ export default function App() {
               <span style={S.cursor} />
             </p>
             <p style={S.heroDesc}>{PERSONAL.description}</p>
-            <div style={S.btns}>
+            <div className="hero-btns" style={S.btns}>
               <button style={S.btnP} onClick={() => goto("Projects")}>View Projects →</button>
               <button style={S.btnO} onClick={() => goto("Contact")}>Get in Touch</button>
             </div>
           </div>
           <div style={{ flexShrink: 0, position: "relative" }}>
-            <div style={{
+            <div className="hero-photo" style={{
               width: "280px", height: "280px", borderRadius: "50%",
               border: "3px solid #2563eb",
               padding: "4px",
@@ -308,7 +349,7 @@ export default function App() {
         <p style={S.secLabel}>Who I am</p>
         <h2 style={S.secTitle}>About Me</h2>
         <div style={S.divider} />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "start" }}>
+        <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "start" }}>
           <div>
             <p style={{ color: "#64748b", lineHeight: 1.8, marginBottom: "1rem", fontSize: "0.92rem" }}>
               I'm a full stack developer with {PERSONAL.stats[1].number} of experience building production-grade web applications.
@@ -478,7 +519,7 @@ export default function App() {
         <p style={S.secLabel}>Get in touch</p>
         <h2 style={S.secTitle}>Contact</h2>
         <div style={S.divider} />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "start" }}>
+        <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "start" }}>
           <div>
             <p style={{ color: "#64748b", lineHeight: 1.8, marginBottom: "1.5rem", fontSize: "0.9rem" }}>
               Have a project in mind or want to talk? Fill out the form and I'll get back to you within 24 hours.
