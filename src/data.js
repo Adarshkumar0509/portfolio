@@ -8,9 +8,9 @@ export const PERSONAL = {
   education: "B.Tech Computer Science",
   languages: "English, Hindi",
   stats: [
-    { number: "6+",  label: "Projects shipped" },
-    { number: "0-1", label: "Years experience" },
-    { number: "50+", label: "GitHub commits" },
+    { number: "10+",  label: "Projects shipped" },
+    { number: "25+",  label: "PRs merged" },
+    { number: "550+", label: "GitHub commits" },
   ],
   contact: {
     email: "adarshkumarthakur0509@gmail.com",
@@ -87,7 +87,7 @@ export const EXPERIENCE = [
     org: "OWASP Cornucopia",
     orgLink: "https://github.com/Adarshkumar0509/cornucopia",
     type: "GSoC Project",
-    period: "2024 — Present",
+    period: "2025 — Present",
     location: "Remote",
     points: [
       "Contributed 25+ merged PRs to OWASP Cornucopia, improving security, accessibility, CI/CD, testing, and frontend/backend functionality in a large-scale open-source cybersecurity project.",
@@ -115,30 +115,12 @@ export const EXPERIENCE = [
 
 export const BLOG_POSTS = [
   {
-    title: "Why I Stopped Using REST and Moved to tRPC",
-    date: "Mar 2025",
-    tag: "Backend",
-    read: "6 min read",
+    title: "My First Open Source Contribution to OWASP Cornucopia",
+    date: "2025",
+    tag: "Open Source",
+    read: "4 min read",
     excerpt:
-      "After building three large-scale APIs with REST, I switched to tRPC on my last project. Here's what I learned.",
-    link: "#",
-  },
-  {
-    title: "PostgreSQL vs MongoDB: A Real-World Comparison",
-    date: "Jan 2025",
-    tag: "Database",
-    read: "9 min read",
-    excerpt:
-      "Not a theory post — this is based on migrating a production app from Mongo to Postgres and back again.",
-    link: "#",
-  },
-  {
-    title: "Docker in Development: The Setup I Actually Use",
-    date: "Nov 2024",
-    tag: "DevOps",
-    read: "5 min read",
-    excerpt:
-      "Most Docker tutorials show you hello-world. This is the actual compose setup I use across every project.",
-    link: "#",
+      "I closed the terminal the first time I cloned OWASP Cornucopia. Opened it again the next day. Here's what happened after — upgrading the toolchain to Python 3.13, surviving CI pipelines I'd never seen, and why the first PR is the hardest.",
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7436105973737582593/",
   },
 ];
