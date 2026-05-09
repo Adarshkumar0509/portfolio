@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import emailjs from '@emailjs/browser';
 import { PERSONAL, ROLES, SKILLS, PROJECTS, EXPERIENCE, BLOG_POSTS } from "./data";
 
 const NAV = ["About", "Skills", "Experience", "Projects", "Resume", "Blog", "Contact"];
@@ -83,9 +84,25 @@ export default function App() {
   const handleForm = async e => {
     e.preventDefault();
     setFormStatus("sending");
-    await new Promise(r => setTimeout(r, 1200));
-    setFormStatus("sent");
-    setForm({ name: "", email: "", message: "" });
+    try {
+      await emailjs.send(
+        "service_i86ioq5",
+        "template_iqk3l6m",
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+          email: form.email,
+          name: form.name,
+        },
+        "AvTFJ7pQy6fCCmxUe"
+      );
+      setFormStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error(err);
+      setFormStatus("error");
+    }
     setTimeout(() => setFormStatus(null), 4000);
   };
 
@@ -475,6 +492,9 @@ export default function App() {
               </button>
               {formStatus === "sent" && (
                 <span style={{ color: "#22c55e", fontSize: "0.82rem", fontWeight: 500 }}>✓ Message sent!</span>
+              )}
+              {formStatus === "error" && (
+                <span style={{ color: "#f87171", fontSize: "0.82rem", fontWeight: 500 }}>✗ Failed. Email me directly.</span>
               )}
             </div>
           </form>
