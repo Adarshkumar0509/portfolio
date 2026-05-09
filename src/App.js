@@ -263,20 +263,42 @@ export default function App() {
       <section data-nav="About" ref={el => sectionRef.current["About"] = el} style={S.hero}>
         <div style={S.heroGrid} />
         <div style={S.heroGlow} />
-        <div style={S.heroContent}>
-          <div style={S.badge}><span style={S.dot} /> Available for work</div>
-          <h1 style={S.heroName}>
-            Hi, I'm<br />
-            <span style={{ color: "#3b82f6" }}>{PERSONAL.name}</span>
-          </h1>
-          <p style={S.heroRole}>
-            <span style={{ color: "#94a3b8" }}>{typed}</span>
-            <span style={S.cursor} />
-          </p>
-          <p style={S.heroDesc}>{PERSONAL.description}</p>
-          <div style={S.btns}>
-            <button style={S.btnP} onClick={() => goto("Projects")}>View Projects →</button>
-            <button style={S.btnO} onClick={() => goto("Contact")}>Get in Touch</button>
+        <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "space-between", gap: "2rem", width: "100%" }}>
+          <div style={S.heroContent}>
+            <div style={S.badge}><span style={S.dot} /> Available for work</div>
+            <h1 style={S.heroName}>
+              Hi, I'm<br />
+              <span style={{ color: "#3b82f6" }}>{PERSONAL.name}</span>
+            </h1>
+            <p style={S.heroRole}>
+              <span style={{ color: "#94a3b8" }}>{typed}</span>
+              <span style={S.cursor} />
+            </p>
+            <p style={S.heroDesc}>{PERSONAL.description}</p>
+            <div style={S.btns}>
+              <button style={S.btnP} onClick={() => goto("Projects")}>View Projects →</button>
+              <button style={S.btnO} onClick={() => goto("Contact")}>Get in Touch</button>
+            </div>
+          </div>
+          <div style={{ flexShrink: 0, position: "relative" }}>
+            <div style={{
+              width: "280px", height: "280px", borderRadius: "50%",
+              border: "3px solid #2563eb",
+              padding: "4px",
+              background: "linear-gradient(135deg, #1e2a38, #0d1117)",
+              boxShadow: "0 0 40px rgba(59,130,246,0.15)",
+            }}>
+              <img
+                src="/photo.jpg"
+                alt="Adarsh Kumar"
+                style={{
+                  width: "100%", height: "100%",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  objectPosition: "top",
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>
