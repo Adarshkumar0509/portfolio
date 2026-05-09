@@ -10,10 +10,11 @@ const STATUS_STYLE = {
 };
 
 const SKILL_TAG_STYLE = {
-  Backend:  { bg: "#2a1a0a", color: "#f5a623", border: "#4a2a0a" },
-  Database: { bg: "#1a0a2a", color: "#c084fc", border: "#3a1a4a" },
-  DevOps:   { bg: "#0a1a2a", color: "#38bdf8", border: "#1a3a4a" },
-  Frontend: { bg: "#1a0a0a", color: "#f87171", border: "#4a1a1a" },
+  Backend:       { bg: "#2a1a0a", color: "#f5a623", border: "#4a2a0a" },
+  Database:      { bg: "#1a0a2a", color: "#c084fc", border: "#3a1a4a" },
+  DevOps:        { bg: "#0a1a2a", color: "#38bdf8", border: "#1a3a4a" },
+  Frontend:      { bg: "#1a0a0a", color: "#f87171", border: "#4a1a1a" },
+  "Open Source": { bg: "#0f2a1a", color: "#3ddc7a", border: "#1a4a2a" },
 };
 
 function tag(label, styleMap) {
