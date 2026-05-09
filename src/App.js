@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { PERSONAL, ROLES, SKILLS, PROJECTS, BLOG_POSTS } from "./data";
+import { PERSONAL, ROLES, SKILLS, PROJECTS, EXPERIENCE, BLOG_POSTS } from "./data";
 
-const NAV = ["About", "Skills", "Projects", "Resume", "Blog", "Contact"];
+const NAV = ["About", "Skills", "Experience", "Projects", "Resume", "Blog", "Contact"];
 
 const STATUS_STYLE = {
   Live:          { bg: "#0f2a1a", color: "#3ddc7a", border: "#1a4a2a" },
@@ -314,6 +314,44 @@ export default function App() {
             <div key={cat} style={S.card}>
               <div style={S.skillCat}>{cat}</div>
               {items.map(s => <span key={s} style={S.pill}>{s}</span>)}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── EXPERIENCE ── */}
+      <section data-nav="Experience" ref={el => sectionRef.current["Experience"] = el} style={S.section}>
+        <p style={S.secLabel}>Where I've worked</p>
+        <h2 style={S.secTitle}>Experience</h2>
+        <div style={S.divider} />
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+          {EXPERIENCE.map((exp, i) => (
+            <div key={i} style={{ ...S.card, borderLeft: "3px solid #2563eb" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.75rem" }}>
+                <div>
+                  <div style={{ fontSize: "1rem", fontWeight: 700, color: "#fff" }}>{exp.role}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "2px" }}>
+                    <a href={exp.orgLink} target="_blank" rel="noreferrer" style={{ fontSize: "0.85rem", color: "#3b82f6", fontWeight: 600, textDecoration: "none" }}>{exp.org}</a>
+                    <span style={{ fontSize: "0.7rem", background: "rgba(59,130,246,0.1)", color: "#60a5fa", border: "1px solid rgba(59,130,246,0.2)", borderRadius: "4px", padding: "1px 7px" }}>{exp.type}</span>
+                  </div>
+                </div>
+                <div style={{ textAlign: "right" }}>
+                  <div style={{ fontSize: "0.78rem", color: "#475569" }}>{exp.period}</div>
+                  <div style={{ fontSize: "0.75rem", color: "#334155" }}>{exp.location}</div>
+                </div>
+              </div>
+              <ul style={{ paddingLeft: "1.1rem", margin: "0 0 1rem" }}>
+                {exp.points.map((pt, j) => (
+                  <li key={j} style={{ fontSize: "0.82rem", color: "#64748b", lineHeight: 1.7, marginBottom: "0.35rem" }}>{pt}</li>
+                ))}
+              </ul>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.5rem" }}>
+                <div>{exp.tags.map(t => <span key={t} style={S.pill}>{t}</span>)}</div>
+                <div style={{ display: "flex", gap: "0.75rem" }}>
+                  {exp.prsLink && <a href={exp.prsLink} target="_blank" rel="noreferrer" style={{ ...S.linkBtn, fontSize: "0.75rem" }}>View PRs →</a>}
+                  {exp.certLink && <a href={exp.certLink} target="_blank" rel="noreferrer" style={{ ...S.linkBtn, fontSize: "0.75rem" }}>View Project →</a>}
+                </div>
+              </div>
             </div>
           ))}
         </div>
